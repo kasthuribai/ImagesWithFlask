@@ -1,22 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-#conda install werkzeug==0.16.1
-
-
-# In[31]:
-
-
 from flask import Flask, request, jsonify, url_for, render_template
 import uuid
 import os
-import werkzeug
 from tensorflow.keras.models import load_model
 import numpy as np
-from werkzeug.utils import secure_filename
+from werkzeug import secure_filename
 from tensorflow.keras.applications import MobileNet
 from PIL import Image, ImageFile
 from io import BytesIO
@@ -24,32 +11,15 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet import preprocess_input
 from tensorflow.keras.applications.mobilenet import decode_predictions
 
-
-# In[32]:
-
-
 ALLOWED_EXTENSION  =set(['txt', 'pdf', 'png','jpg','jpeg','gif'])
 IMAGE_HEIGHT =224
 IMAGE_WIDTH = 224
 IMAGE_CHANNELS = 3
-
-#os.chdir(r'C:\Users\USER\Documents\flaskdata')
-
-
-# In[33]:
-
-
-os.getcwd()
-
-
-# In[34]:
-
+#os.chdir(r'C:\Users\danie\Desktop\flaskdata')
 
 def allowed_file(filename):
-    return '.' in filename and      filename.rsplit('.',1)[1] in ALLOWED_EXTENSION
-
-
-# In[28]:
+    return '.' in filename and \
+     filename.rsplit('.',1)[1] in ALLOWED_EXTENSION
 
 
 app = Flask(__name__)
@@ -94,10 +64,3 @@ def upload_image():
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
             
-
-
-# In[ ]:
-
-
-
-
